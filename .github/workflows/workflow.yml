@@ -1,0 +1,99 @@
+name: GitHub Workflows Actions
+
+# run workflow manually or during PR
+on:
+  push:
+    tags:
+      - '!**'
+    branches:
+      - '**'
+
+# Allow one concurrent deployment
+# concurrency:
+#   group: ${{ github.ref }}
+#   cancel-in-progress: true
+
+#### TODO add tests ......
+
+jobs:
+  release:
+    name: "Release GitHub"
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Step Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          # cache: pnpm
+
+      - name: Get package version
+        id: get-version
+        run: |
+          version=v$(pnpm pkg get version | tr -d '"')
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "====> $version"
+        shell: bash
+
+      - name: "Create Tag ${{ steps.get-version.outputs.version }}"
+        uses: rickstaa/action-create-tag@v1
+        id: create-tag
+        with:
+          tag: ${{ steps.get-version.outputs.version }}
+          tag_exists_error: false
+          message: ${{ steps.get-version.outputs.version }}
+      - run: |
+          echo "Tag already present: ${{ steps.create-tag.outputs.tag_exists }}"
+
+      - name: Extract release notes from CHANGELOG.md
+        id: extract-release-notes
+        uses: ffurrer2/extract-release-notes@v1
+        with:
+          changelog_file: CHANGELOG.md
+
+      - name: "Create a GitHub release ${{ steps.get-version.outputs.version }}"
+        uses: ncipollo/release-action@v1
+        with:
+          tag: "${{ steps.get-version.outputs.version }}"
+          name: "Release ${{ steps.get-version.outputs.version }}"
+          body: |
+            ## Release notes:
+            ${{ steps.extract-release-notes.outputs.release_notes }}
+
+  ################################## DEPLOYMENT ########################################
+
+  publish-npm:
+    needs: [release]
+    name: "Publish to NPM"
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: Production
+    env:
+      NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Step Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          # cache: pnpm
+
+      - name: Set deployment token
+        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+
+      - name: Publish to NPM
+        run: pnpm publish --access=public --no-git-checks
