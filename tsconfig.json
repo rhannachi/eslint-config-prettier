@@ -1,11 +1,9 @@
 {
-  "include": ["./**/*"],
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "declaration": true,
-    "declarationDir": "dist",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
