@@ -1,10 +1,11 @@
 {
   "name": "@rhannachi/eslint-prettier-config",
   "author": "rhannachi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ESLint and Prettier settings for React Typescript project",
   "main": "index.js",
   "repository": "https://github.com/rhannachi/eslint-prettier-config.git",
+  "homepage": "https://www.npmjs.com/package/@rhannachi/eslint-prettier-config",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +17,7 @@
     "config"
   ],
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.45.0",
@@ -28,18 +29,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.0.0"
   },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.0.0"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=16.19.1"
   }
