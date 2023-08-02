@@ -1,15 +1,11 @@
 {
-  "name": "@rhannachi/eslint-prettier-config",
+  "name": "@rhannachi/eslint-config-prettier",
   "author": "rhannachi",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "ESLint and Prettier settings for React Typescript project",
   "main": "index.js",
-  "repository": "https://github.com/rhannachi/eslint-prettier-config.git",
-  "homepage": "https://www.npmjs.com/package/@rhannachi/eslint-prettier-config",
-  "scripts": {
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
-  },
+  "repository": "https://github.com/rhannachi/eslint-config-prettier.git",
+  "homepage": "https://www.npmjs.com/package/@rhannachi/eslint-config-prettier",
   "keywords": [
     "typescript",
     "eslint",
