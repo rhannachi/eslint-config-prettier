@@ -1,8 +1,8 @@
 {
   "name": "@rhannachi/eslint-config-prettier",
   "author": "rhannachi",
-  "version": "1.1.2",
-  "description": "Configure ESLint and Prettier for a React TypeScript project",
+  "version": "1.2.0",
+  "description": "Configure ESLint and Prettier for a React/Next.js TypeScript project",
   "main": "index.js",
   "repository": "https://github.com/rhannachi/eslint-config-prettier.git",
   "homepage": "https://www.npmjs.com/package/@rhannachi/eslint-config-prettier",
@@ -12,7 +12,8 @@
     "prettier",
     "lint",
     "config",
-    "react"
+    "react",
+    "next"
   ],
   "license": "MIT",
   "peerDependencies": {
@@ -24,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.45.0",
+    "eslint-config-next": "^13.4.12",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
