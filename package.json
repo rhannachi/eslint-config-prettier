@@ -1,7 +1,7 @@
 {
   "name": "@rhannachi/eslint-config-prettier",
   "author": "rhannachi",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Configure ESLint and Prettier for a React/Next.js TypeScript project",
   "main": "index.js",
   "repository": "https://github.com/rhannachi/eslint-config-prettier.git",
