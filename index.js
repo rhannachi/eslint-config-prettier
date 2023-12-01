@@ -21,16 +21,16 @@ module.exports = {
         "react/react-in-jsx-scope": "off",
         camelcase: "error",
         "spaced-comment": "error",
-        quotes: ["error", "single"],
+        quotes: ["error", "double"],
         "no-duplicate-imports": "error",
         "prettier/prettier": [
             "error", {
                 semi: false,
                 tabWidth: 2,
                 printWidth: 100,
-                singleQuote: true,
+                singleQuote: false,
                 trailingComma: "all",
-                jsxSingleQuote: true,
+                jsxSingleQuote: false,
                 bracketSpacing: true
             }
         ]
